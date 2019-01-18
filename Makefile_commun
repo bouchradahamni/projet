@@ -1,0 +1,46 @@
+#####################################################
+#makefile EQP 25-43									#
+#auteur:William Glazer								#
+#Variable globales									#
+#####################################################
+
+#Struct. Projet
+src_dir=src
+build_dir=build
+inc_dir=include
+exec_dir=exec
+exec_name=executable.out
+lib_inc=librobot
+lib_dir=librobot
+lib_name=robot
+
+   
+
+
+#verifications
+vars:
+	@echo "src = $(src)"
+	@echo "obj = $(obj)"
+	@echo "trg = $(trg)"
+	@echo "CFLAGS = $(CFLAGS)"
+	@echo "lib = $(lib)"
+
+
+#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+#                   VIENS DU MAKEFILE DE COURS
+#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+
+# Linker pour lier les librairies utilisees
+LDFLAGStru=-Wl,-Map,$(trg).map -mmcu=$(MCU) 
+LDFLAGS=-crs
+
+#nom de projet
+PROJECTNAME=monrobot
+
+#Flags compilation
+MCU=atmega324pa
+CFLAGS_commun= -I. -MMD $(INC) -g -mmcu=$(MCU) -Os -fpack-struct -fshort-enums  -funsigned-bitfields -funsigned-char -Wall   -fno-exceptions 
+
+# Flags pour le compilateur en C++
+CXXFLAGS=-fno-exceptions  -DF_CPU=8000000UL   
+
